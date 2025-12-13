@@ -2,6 +2,10 @@ import Database from "../Database/index.js";
 
 let { enrollments } = Database;
 
+export function findEnrollmentsForUser(userId) {
+  return enrollments.filter((e) => e.user === userId);
+}
+
 export function findCoursesForUser(userId) {
   const userEnrollments = enrollments.filter((e) => e.user === userId);
   const courseIds = userEnrollments.map((e) => e.course);
