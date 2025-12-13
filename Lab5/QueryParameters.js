@@ -1,3 +1,4 @@
+ 
 export default function QueryParameters(app) {
   const calculator = (req, res) => {
     const { a, b, operation } = req.query;

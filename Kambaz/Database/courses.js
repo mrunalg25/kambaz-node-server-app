@@ -1,32 +1,52 @@
 export default [
   {
-    _id: "RS101",
-    name: "Rocket Propulsion",
-    number: "RS4550",
-    startDate: "2023-01-10",
-    endDate: "2023-05-15",
-    department: "D123",
-    credits: 4,
-    description: "This course provides an in-depth study of the fundamentals of rocket propulsion.",
+    "_id": "CS101",
+    "name": "Introduction to JavaScript",
+    "number": "CS1234",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-15",
+    "department": "CS",
+    "credits": 4,
+    "description": "Learn the basics of JavaScript programming language and modern web development."
   },
   {
-    _id: "RS102",
-    name: "Aerodynamics",
-    number: "RS4560",
-    startDate: "2023-01-10",
-    endDate: "2023-05-15",
-    department: "D123",
-    credits: 3,
-    description: "This course offers a comprehensive exploration of aerodynamics.",
+    "_id": "CS102",
+    "name": "React Fundamentals",
+    "number": "CS2345",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-15",
+    "department": "CS",
+    "credits": 4,
+    "description": "Understand the core concepts of React framework and build dynamic user interfaces."
   },
   {
-    _id: "RS103",
-    name: "Spacecraft Design",
-    number: "RS4570",
-    startDate: "2023-01-10",
-    endDate: "2023-05-15",
-    department: "D123",
-    credits: 4,
-    description: "This course delves into the principles and practices of spacecraft design.",
+    "_id": "CS103",
+    "name": "Next.js Deep Dive",
+    "number": "CS3456",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-15",
+    "department": "CS",
+    "credits": 3,
+    "description": "Build powerful server-rendered React apps with Next.js framework."
   },
-];
+  {
+    "_id": "CS104",
+    "name": "Advanced Node.js",
+    "number": "CS4567",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-15",
+    "department": "CS",
+    "credits": 4,
+    "description": "Master backend development with Node.js and Express framework."
+  },
+  {
+    "_id": "CS105",
+    "name": "Full Stack Development",
+    "number": "CS5678",
+    "startDate": "2024-01-10",
+    "endDate": "2024-05-15",
+    "department": "CS",
+    "credits": 4,
+    "description": "Build complete web applications using modern full stack technologies."
+  }
+] 

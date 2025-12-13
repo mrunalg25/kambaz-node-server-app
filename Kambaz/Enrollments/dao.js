@@ -3,17 +3,15 @@ import Database from "../Database/index.js";
 let { enrollments } = Database;
 
 export function findCoursesForUser(userId) {
-  const { courses } = Database;
   const userEnrollments = enrollments.filter((e) => e.user === userId);
-  const enrolledCourses = courses.filter((course) =>
-    userEnrollments.some((enrollment) => enrollment.course === course._id)
-  );
-  return enrolledCourses;
+  const courseIds = userEnrollments.map((e) => e.course);
+  const { courses } = Database;
+  return courses.filter((c) => courseIds.includes(c._id));
 }
 
 export function enrollUserInCourse(userId, courseId) {
   const newEnrollment = {
-    _id: `${userId}-${courseId}`,
+    _id: Date.now().toString(),
     user: userId,
     course: courseId,
   };
@@ -25,4 +23,12 @@ export function unenrollUserFromCourse(userId, courseId) {
   enrollments = enrollments.filter(
     (e) => !(e.user === userId && e.course === courseId)
   );
+  return { status: "ok" };
 }
+
+export function findUsersForCourse(courseId) {
+  const courseEnrollments = enrollments.filter((e) => e.course === courseId);
+  const userIds = courseEnrollments.map((e) => e.user);
+  const { users } = Database;
+  return users.filter((u) => userIds.includes(u._id));
+} 

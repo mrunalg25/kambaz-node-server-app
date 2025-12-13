@@ -13,15 +13,17 @@ export function createAssignment(assignment) {
 }
 
 export function deleteAssignment(assignmentId) {
-  assignments = assignments.filter(
-    (assignment) => assignment._id !== assignmentId
-  );
+  assignments = assignments.filter((assignment) => assignment._id !== assignmentId);
+  return { status: "ok" };
 }
 
 export function updateAssignment(assignmentId, assignmentUpdates) {
-  const assignment = assignments.find(
-    (assignment) => assignment._id === assignmentId
+  assignments = assignments.map((a) =>
+    a._id === assignmentId ? { ...a, ...assignmentUpdates } : a
   );
-  Object.assign(assignment, assignmentUpdates);
-  return assignment;
+  return assignments.find((a) => a._id === assignmentId);
 }
+
+export function findAssignmentById(assignmentId) {
+  return assignments.find((assignment) => assignment._id === assignmentId);
+} 
