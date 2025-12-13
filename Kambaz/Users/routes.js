@@ -106,6 +106,11 @@ export default function UserRoutes(app) {
     res.sendStatus(204);
   };
 
+  const createUser = async (req, res) => {
+  const user = dao.createUser(req.body);
+  res.json(user);
+};
+
   // Routes
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
@@ -117,4 +122,5 @@ export default function UserRoutes(app) {
   app.get("/api/users", findAllUsers); // Supports ?role=STUDENT or ?name=john
   app.get("/api/users/:userId", findUserById);
   app.delete("/api/users/:userId", deleteUser);
+  app.post("/api/users", createUser);
 }
