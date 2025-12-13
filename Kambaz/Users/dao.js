@@ -19,6 +19,15 @@ export const findUserByUsername = (username) =>
 export const findUserByCredentials = (username, password) =>
   users.find((user) => user.username === username && user.password === password);
 
+export const findUsersByRole = (role) => 
+  users.filter((user) => user.role === role);
+
+export const findUsersByPartialName = (name) => 
+  users.filter((user) => {
+    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+    return fullName.includes(name.toLowerCase());
+  });
+
 export const updateUser = (userId, userUpdates) => {
   const user = users.find((u) => u._id === userId);
   Object.assign(user, userUpdates);

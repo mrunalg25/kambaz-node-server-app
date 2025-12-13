@@ -67,6 +67,45 @@ export default function UserRoutes(app) {
     res.json(courses);
   };
 
+  // ADD THESE THREE NEW FUNCTIONS:
+  const findAllUsers = (req, res) => {
+    const { role, name } = req.query;
+    
+    // Filter by role if provided
+    if (role) {
+      const users = dao.findUsersByRole(role);
+      res.json(users);
+      return;
+    }
+    
+    // Filter by name if provided
+    if (name) {
+      const users = dao.findUsersByPartialName(name);
+      res.json(users);
+      return;
+    }
+    
+    // Otherwise return all users
+    const users = dao.findAllUsers();
+    res.json(users);
+  };
+
+  const findUserById = (req, res) => {
+    const userId = req.params.userId;
+    const user = dao.findUserById(userId);
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  };
+
+  const deleteUser = (req, res) => {
+    const userId = req.params.userId;
+    dao.deleteUser(userId);
+    res.sendStatus(204);
+  };
+
   // Routes
   app.post("/api/users/signup", signup);
   app.post("/api/users/signin", signin);
@@ -74,4 +113,8 @@ export default function UserRoutes(app) {
   app.post("/api/users/profile", profile);
   app.put("/api/users/:userId", updateUser);
   app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
+  // ADD THESE THREE NEW ROUTES:
+  app.get("/api/users", findAllUsers); // Supports ?role=STUDENT or ?name=john
+  app.get("/api/users/:userId", findUserById);
+  app.delete("/api/users/:userId", deleteUser);
 }
